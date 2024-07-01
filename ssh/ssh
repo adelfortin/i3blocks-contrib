@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Check if connected via SSH
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    # Get the IP address of the remote machine
+    IP=$(echo $SSH_CLIENT | awk '{print $1}')
+    echo "SSH: $IP"
+else
+    # Get the hostname
+    HOSTNAME=$(hostname)
+    echo "$HOSTNAME"
+fi
